@@ -1,13 +1,8 @@
-#ifndef NOT_AI_TESTCASEREADER_H
-#define NOT_AI_TESTCASEREADER_H
+#ifndef NOT_AI_TEST_READER_H
+#define NOT_AI_TEST_READER_H
 
-struct TestCase {
+#include "../solvers/TestCase.h"
 
-};
+extern solver::TestCase *readTestCases(const char*);
 
-class TestCaseReader {
-
-};
-
-
-#endif //NOT_AI_TESTCASEREADER_H
+#endif //NOT_AI_TEST_READER_H

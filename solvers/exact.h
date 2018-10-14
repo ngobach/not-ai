@@ -3,9 +3,10 @@
 
 #include "base.h"
 namespace solver {
-    class ExactSolver : protected BaseSolver {
+    class ExactSolver : public BaseSolver {
     public:
         ExactSolver();
+        bool solve(TestCase);
     };
 }
 #endif //NOT_AI_EXACT_H
