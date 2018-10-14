@@ -6,7 +6,7 @@ namespace solver {
     class ExactSolver : public BaseSolver {
     public:
         ExactSolver();
-        bool solve(TestCase);
+        Result solve(TestCase*);
     };
 }
 #endif //NOT_AI_EXACT_H

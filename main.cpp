@@ -8,13 +8,18 @@ using namespace cimg_library;
 using namespace std;
 using namespace solver;
 
-const char* TC01 = "/home/bachnx/Downloads/pikalong-ai-testcases/testcase_01";
+const char* TC01 = "/home/bachnx/Downloads/testcase_01";
 
 int main(){
     BaseSolver *solver = new ExactSolver;
     TestCase *tc = readTestCases(TC01);
     tc->dump();
-    solver->solve(tc);
+    if (tc->isValid()) {
+        Result result = solver->solve(tc);
+        result.visualize();
+    } else {
+        cerr << "Invalid test case!\nExiting";
+    }
     delete tc;
     delete solver;
     return 0;
