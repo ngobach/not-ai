@@ -12,9 +12,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cc5be8e6-4457-4ade-a451-73fdc3a54f5a" name="Default Changelist" comment="Ahihi">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CImg.h" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/solvers/Result.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/solvers/Result.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/solvers/exact.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/solvers/exact.cpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -85,16 +84,16 @@
     <session id="-250963929">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="5" />
+          <entry key="project.closed" value="6" />
           <entry key="project.open.time.2" value="1" />
-          <entry key="project.open.time.3" value="4" />
+          <entry key="project.open.time.3" value="5" />
           <entry key="project.open.time.4" value="2" />
-          <entry key="project.opened" value="7" />
+          <entry key="project.opened" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="cpp" value="1942" />
+          <entry key="cpp" value="1944" />
           <entry key="h" value="525" />
           <entry key="txt" value="81" />
         </counts>
@@ -102,7 +101,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CMakeLists.txt" value="81" />
-          <entry key="ObjectiveC" value="2467" />
+          <entry key="ObjectiveC" value="2469" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -129,7 +128,7 @@
         <entry file="file://$PROJECT_DIR$/solvers/exact.cpp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="165">
-              <caret line="11" column="40" lean-forward="true" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
+              <caret line="11" column="40" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -137,7 +136,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/solvers/TestCase.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
+            <state relative-caret-position="150">
               <caret line="10" column="26" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="26" />
             </state>
           </provider>
@@ -146,8 +145,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/solvers/Result.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="25" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
+            <state relative-caret-position="120">
+              <caret line="8" column="1" lean-forward="true" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -155,7 +154,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/solvers/TestCase.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
+            <state relative-caret-position="120">
               <caret line="8" column="23" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
             </state>
           </provider>
@@ -226,16 +225,6 @@
               <item name="not_ai" type="b2602c69:ProjectViewProjectNode" />
               <item name="not-ai" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="not_ai" type="b2602c69:ProjectViewProjectNode" />
-              <item name="not-ai" type="462c0819:PsiDirectoryNode" />
-              <item name="solvers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="not_ai" type="b2602c69:ProjectViewProjectNode" />
-              <item name="not-ai" type="462c0819:PsiDirectoryNode" />
-              <item name="utils" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -296,11 +285,12 @@
       <workItem from="1539500240349" duration="3360000" />
       <workItem from="1539504751473" duration="2567000" />
       <workItem from="1539510908075" duration="2824000" />
+      <workItem from="1539618475285" duration="518000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23360000" />
+    <option name="totallyTimeSpent" value="23878000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -316,9 +306,9 @@
     <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" sideWeight="0.50319487" side_tool="true" weight="0.18249734" />
-      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.4968051" visible="true" weight="0.20365246" />
+      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.4968051" visible="true" weight="0.20586608" />
       <window_info id="Structure" order="2" sideWeight="0.5005359" side_tool="true" weight="0.18249734" />
-      <window_info anchor="bottom" id="Version Control" order="0" weight="0.3290461" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="0" visible="true" weight="0.32864866" />
       <window_info anchor="bottom" id="Terminal" order="1" weight="0.3290461" />
       <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="3" show_stripe_button="false" />
@@ -348,6 +338,32 @@
         <option value="3" />
         <option value="1" />
       </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
     </option>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -437,6 +453,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/solvers/exact.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="40" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/solvers/TestCase.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="26" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/solvers/TestCase.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="23" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/solvers/Result.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -447,31 +484,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/solvers/exact.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="40" lean-forward="true" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/solvers/TestCase.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="8" column="23" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/solvers/TestCase.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="10" column="26" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/solvers/Result.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="25" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
+        <state relative-caret-position="120">
+          <caret line="8" column="1" lean-forward="true" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
         </state>
       </provider>
     </entry>
