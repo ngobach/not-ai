@@ -1,18 +1,16 @@
 #include "exact.h"
+#include "map"
+#include "../CImg.h"
 
 solver::ExactSolver::ExactSolver() : BaseSolver("ExactSolver") {}
 
 solver::Result solver::ExactSolver::solve(solver::TestCase *tc) {
+    using cimg_library::CImg;
     Result result(tc);
-    result.items.push_back(ResultItem {
-        tc->parts[1],
-        0, 0,
-        Rotate::DEG_0,
-    });
-    result.items.push_back(ResultItem {
-        tc->parts[2],
-        300, 300,
-        Rotate::DEG_270,
-    });
+    std::map<int, ResultItem> m;
+    CImg<unsigned char> origin((tc->basePath + "/" + tc->origin).data());
+    for (const auto &partName: tc->parts) {
+
+    }
     return result;
 }

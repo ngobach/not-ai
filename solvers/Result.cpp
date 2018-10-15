@@ -6,8 +6,9 @@ solver::Result::Result(TestCase* testcase) : origin(testcase->origin), basePath(
 
 void solver::Result::visualize() {
     using cimg_library::CImg;
+    using cimg_library::CImgDisplay;
     CImg<unsigned char> frame((this->basePath + "/" + this->origin).data());
-    frame.fill(0x33);
+    frame.normalize(0, 64);
     for (auto &part : this->items) {
         CImg<unsigned char> imgPart((this->basePath + "/" + part.name).data());
         if (part.r) {
@@ -15,5 +16,8 @@ void solver::Result::visualize() {
         }
         frame.draw_image(part.x, part.y, imgPart);
     }
-    frame.display("Visualized");
+    CImgDisplay display(frame, "Visualized", 0);
+    while (!display.is_closed()) {
+        display.wait();
+    }e
 }
