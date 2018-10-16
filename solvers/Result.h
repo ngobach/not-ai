@@ -28,6 +28,7 @@ namespace solver {
         std::string origin;
         std::vector<ResultItem> items;
         void visualize();
+        void send();
     };
 }
 

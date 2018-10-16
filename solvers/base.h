@@ -9,7 +9,7 @@ namespace solver {
     class BaseSolver {
     public:
         BaseSolver(std::string s);
-        virtual Result solve(TestCase*) =0;
+        virtual Result * solve(TestCase *) =0;
     protected:
         std::string name;
     };
