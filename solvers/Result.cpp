@@ -1,11 +1,14 @@
 #include "Result.h"
 #include <opencv2/core.hpp>
+#if DEBUG == true
 #include <opencv2/highgui.hpp>
+#endif
 #include <opencv2/imgproc.hpp>
 
 solver::Result::Result() {}
 solver::Result::Result(TestCase* tc) : origin(tc->origin), basePath(tc->basePath) {}
 
+#if DEBUG == true
 void solver::Result::visualize() {
     using namespace cv;
     Mat bg = imread((this->basePath + "/" + this->origin).data());
@@ -19,7 +22,12 @@ void solver::Result::visualize() {
     imshow("Visualizer", bg);
     waitKey(0);
 }
+#else
+void solver::Result::visualize() {
+    printf("Release build! Visualize skipped.");
+}
+#endif
 
 void solver::Result::send() {
-    //  TODO: Send this via socket
+    // TODO: Send this via socket
 }
