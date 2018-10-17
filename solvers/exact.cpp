@@ -7,6 +7,10 @@
 
 solver::ExactSolver::ExactSolver() : BaseSolver("ExactSolver") {}
 
+namespace {
+    const float EPSILON = 0.01;
+}
+
 solver::Result *solver::ExactSolver::solve(solver::TestCase *tc) {
     using namespace cv;
     Result *result = new Result(tc);
@@ -26,7 +30,18 @@ solver::Result *solver::ExactSolver::solve(solver::TestCase *tc) {
         } else {
             matchLoc = maxLoc;
         }
-        printf("** Match result for part \"%s\": at %d %d\n", (tc->basePath + "/" + part).data(), matchLoc.x, matchLoc.y);
+        printf("** Match result for part \"%s\": at %d:%d value=%f\n", (tc->basePath + "/" + part).data(), matchLoc.x, matchLoc.y, match.at<float>(matchLoc));
+        if(match_method == CV_TM_SQDIFF || match_method == CV_TM_SQDIFF_NORMED) {
+            if (match.at<float>(matchLoc) > EPSILON) {
+                printf("** Too small, kipped!\n");
+                continue;
+            }
+        } else {
+            if (1-match.at<float>(matchLoc) > EPSILON){
+                printf("** Too big, skipped!\n");
+                matchLoc = maxLoc;
+            }
+        }
         result->items.push_back(ResultItem {
             part,
             matchLoc.x,

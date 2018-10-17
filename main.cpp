@@ -6,7 +6,7 @@
 using namespace std;
 using namespace solver;
 
-const char* TC01 = "../testcase";
+const char* TC01 = "/home/bachnx/Documents/tc02";
 
 int main(){
     BaseSolver *solver = new ExactSolver;
