@@ -1,6 +1,7 @@
 #include "exact.h"
 #include "map"
 #include <iostream>
+#include <limits>
 #include <opencv2/core.hpp>
 #include <opencv2/imgproc.hpp>
 #include <opencv2/imgcodecs.hpp>
@@ -17,37 +18,35 @@ solver::Result *solver::ExactSolver::solve(solver::TestCase *tc) {
     std::map<int, ResultItem> m;
     Mat origin = imread(tc->basePath + "/" + tc->origin);
     Mat match;
-    const int match_method = CV_TM_SQDIFF_NORMED;
+
     for (const auto &part : tc->parts) {
-        double minVal = 0, maxVal = 0;
-        Point minLoc, maxLoc, matchLoc;
+        double best = std::numeric_limits<double>::min();
+        ResultItem ri;
+        double minVal, maxVal;
+        Point loc;
         Mat mPart = imread(tc->basePath + "/" + part);
-        match.create(origin.rows - mPart.rows + 1, origin.cols - mPart.cols + 1, CV_32FC1);
-        matchTemplate(origin, mPart, match, match_method);
-        minMaxLoc(match, &minVal, &maxVal, &minLoc, &maxLoc);
-        if(match_method == CV_TM_SQDIFF || match_method == CV_TM_SQDIFF_NORMED) {
-            matchLoc = minLoc;
-        } else {
-            matchLoc = maxLoc;
-        }
-        printf("** Match result for part \"%s\": at %d:%d value=%f\n", (tc->basePath + "/" + part).data(), matchLoc.x, matchLoc.y, match.at<float>(matchLoc));
-        if(match_method == CV_TM_SQDIFF || match_method == CV_TM_SQDIFF_NORMED) {
-            if (match.at<float>(matchLoc) > EPSILON) {
-                printf("** Too small, kipped!\n");
-                continue;
+        for (int rot = 0; rot < 4; rot++) {
+            Mat tmp;
+            mPart.copyTo(tmp);
+            if (rot) {
+                cv::rotate(tmp, tmp, rot-1);
             }
-        } else {
-            if (1-match.at<float>(matchLoc) > EPSILON){
-                printf("** Too big, skipped!\n");
-                matchLoc = maxLoc;
+            match.create(origin.rows - tmp.rows + 1, origin.cols - tmp.cols + 1, CV_32FC1);
+            matchTemplate(origin, tmp, match, CV_TM_CCOEFF);
+            minMaxLoc(match, &minVal, &maxVal, nullptr, &loc);
+            printf("** Match result for part \"%30s\"/%d at (%5d:%5d) ::: %lf/%lf\n", (tc->basePath + "/" + part).data(), rot * 90, loc.x, loc.y, minVal, maxVal);
+            if (maxVal > best) {
+                ri = ResultItem {
+                    part,
+                    loc.x,
+                    loc.y,
+                    (Rotate)rot,
+                };
+                best = maxVal;
             }
         }
-        result->items.push_back(ResultItem {
-            part,
-            matchLoc.x,
-            matchLoc.y,
-            Rotate::DEG_0,
-        });
+        result->items.push_back(ri);
+        std::cout << result->items.back() << '\n';
     }
     return result;
 }

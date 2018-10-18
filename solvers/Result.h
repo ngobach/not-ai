@@ -3,6 +3,7 @@
 #define NOT_AI_RESULT_H
 
 #include "TestCase.h"
+#include <iostream>
 #include <string>
 #include <vector>
 
@@ -19,6 +20,8 @@ namespace solver {
         int x, y;
         Rotate r;
     };
+
+    std::ostream & operator<<(std::ostream&, const ResultItem&);
 
     struct Result {
     public:

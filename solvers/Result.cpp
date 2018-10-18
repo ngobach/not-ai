@@ -15,7 +15,10 @@ void solver::Result::visualize() {
     bg = Scalar(48, 48, 48);
     namedWindow("Visualizer", WINDOW_AUTOSIZE);
     for (const auto &item : this->items) {
-        Mat tmp = imread(this->basePath + "/" + item.name, IMREAD_COLOR);
+        Mat tmp = imread(this->basePath + "/" + item.name);
+        if (item.r) {
+            rotate(tmp, tmp, item.r - 1);
+        }
         rectangle(tmp, { 0, 0 }, { tmp.cols - 1 , tmp.rows - 1 }, Scalar(0, 0, 255));
         tmp.copyTo(bg.rowRange(item.y, min(item.y + tmp.rows, bg.rows)).colRange(item.x, min(item.x + tmp.cols, bg.cols)));
     }
@@ -30,4 +33,9 @@ void solver::Result::visualize() {
 
 void solver::Result::send() {
     // TODO: Send this via socket
+}
+
+std::ostream &solver::operator<<(std::ostream &out, const solver::ResultItem &r) {
+    out << "Part: " << r.name << " at " << r.x << ";" << r.y;
+    return out;
 }
