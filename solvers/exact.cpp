@@ -8,10 +8,6 @@
 
 solver::ExactSolver::ExactSolver() : BaseSolver("ExactSolver") {}
 
-namespace {
-    const float EPSILON = 0.01;
-}
-
 solver::Result *solver::ExactSolver::solve(solver::TestCase *tc) {
     using namespace cv;
     Result *result = new Result(tc);
@@ -21,7 +17,7 @@ solver::Result *solver::ExactSolver::solve(solver::TestCase *tc) {
 
     for (const auto &part : tc->parts) {
         double best = std::numeric_limits<double>::min();
-        ResultItem ri;
+        ResultItem ri = ResultItem {};
         double minVal, maxVal;
         Point loc;
         Mat mPart = imread(tc->basePath + "/" + part);

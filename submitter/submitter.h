@@ -7,7 +7,7 @@
 
 #include <string>
 
-namespace submiter {
+namespace submitter {
     struct SubmitResult {
         std::string name;
         int x, y, rotate;

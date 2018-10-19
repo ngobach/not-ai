@@ -1,8 +1,8 @@
 #include <sys/socket.h>
 #include <arpa/inet.h>
 
-#include "submiter.h"
+#include "submitter.h"
 
-bool submiter::connect(const char *host, int port) {
-
+bool submitter::connect(const char *host, int port) {
+    return false;
 }
