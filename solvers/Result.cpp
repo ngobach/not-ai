@@ -20,7 +20,19 @@ void solver::Result::visualize() {
             rotate(tmp, tmp, item.r - 1);
         }
         rectangle(tmp, { 0, 0 }, { tmp.cols - 1 , tmp.rows - 1 }, Scalar(0, 0, 255));
-        tmp.copyTo(bg.rowRange(item.y, min(item.y + tmp.rows, bg.rows)).colRange(item.x, min(item.x + tmp.cols, bg.cols)));
+        int x, y, xx, yy;
+        x = min(item.x, bg.cols - tmp.cols);
+        y = min(item.y, bg.rows - tmp.rows);
+        xx = x + tmp.cols;
+        yy = y + tmp.rows;
+        printf("Part [%s] => (%d->%d):(%d->%d)\n", item.name.data(), x, xx, y, yy);
+        tmp.copyTo(bg.colRange(x, xx).rowRange(y, yy));
+    }
+    const int visibleWidth = 1600;
+    const int visibleHeight = 900;
+    double ratio = min(double(visibleWidth) / bg.cols, double(visibleHeight) / bg.rows);
+    if (ratio < 1) {
+        resize(bg, bg, Size(bg.cols * ratio, bg.rows * ratio), CV_INTER_LINEAR);
     }
     imshow("Visualizer", bg);
     waitKey(0);

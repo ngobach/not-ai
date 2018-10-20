@@ -8,7 +8,7 @@ using namespace std;
 using namespace solver;
 
 #if DEBUG == true
-const char* TEST_CASE_DIR = "/home/bachnx/Documents/tc03xs";
+const char* TEST_CASE_DIR = "/home/bachnx/Documents/tc01";
 #else
 const char* TEST_CASE_DIR = "../testcase";
 #endif

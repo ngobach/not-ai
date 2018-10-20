@@ -20,6 +20,12 @@ inline long long millis() {
     return duration_cast< milliseconds >(system_clock::now().time_since_epoch()).count();
 }
 
+
+#if DEBUG == true
+bool submitter::connect(const char *host, int port) {
+    return true;
+}
+#else
 bool submitter::connect(const char *host, int port) {
     sockaddr_in server_addr;
     if((sock_fd = socket(AF_INET, SOCK_STREAM, 0)) < 0)
@@ -37,12 +43,29 @@ bool submitter::connect(const char *host, int port) {
     }
     return true;
 }
+#endif
 
+#if DEBUG == true
+bool submitter::disconnect() {
+    return true;
+}
+#else
 bool submitter::disconnect() {
     shutdown(sock_fd, SHUT_RDWR);
     return true;
 }
+#endif
 
+#if DEBUG == true
+submitter::SubmitResult submitter::submit(const char *name, int x, int y, int rotate) {
+    SubmitResult result = {};
+    result.x = x;
+    result.y = y;
+    result.name = name;
+    result.rotate = rotate;
+    return result;
+}
+#else
 submitter::SubmitResult submitter::submit(const char *name, int x, int y, int rotate) {
     long long delay = lastSubmit + SUBMIT_DELAY_MS - millis();
     if (delay > 0) {
@@ -58,4 +81,4 @@ submitter::SubmitResult submitter::submit(const char *name, int x, int y, int ro
     lastSubmit = millis();
     return submitter::SubmitResult();
 }
-
+#endif
