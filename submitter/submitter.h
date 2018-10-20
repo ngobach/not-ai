@@ -16,7 +16,6 @@ namespace submitter {
 
     bool connect(const char* host, int port);
     bool disconnect();
-    bool isConnected();
     SubmitResult submit(const char *name, int x, int y, int rotate);
 }
 

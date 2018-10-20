@@ -7,18 +7,24 @@
 using namespace std;
 using namespace solver;
 
-//const char* TC01 = "/home/bachnx/Documents/tc03xs";
+#if DEBUG == true
 const char* TEST_CASE_DIR = "/home/bachnx/Documents/tc03xs";
+#else
+const char* TEST_CASE_DIR = "../testcase";
+#endif
 
 int main(int argc, char **argv){
     char sock_host[1024];
     int sock_port;
-    if (argc < 3) {
+    if (argc == 2) {
         strcpy(sock_host, "127.0.0.1");
         sock_port = atoi(argv[1]);
-    } else {
+    } else if (argc == 3) {
         strcpy(sock_host, argv[1]);
         sock_port = atoi(argv[2]);
+    } else {
+        printf("Invalid argument count %d\n", argc);
+        exit(1);
     }
     printf("Socket info %s:%d\n", sock_host, sock_port);
     bool isConnect = submitter::connect(sock_host, sock_port);
