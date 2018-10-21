@@ -1,4 +1,2 @@
 #!/usr/bin/env bash
-
-chmod +x ./prog
-./prog $@
+./not_ai $@
