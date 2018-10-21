@@ -8,10 +8,15 @@
 #include <string>
 
 namespace submitter {
+    enum Verb {
+        OK,
+        RETRY,
+        WRONG,
+    };
     struct SubmitResult {
         std::string name;
         int x, y, rotate;
-        bool isOk;
+        Verb verb;
     };
 
     bool connect(const char* host, int port);

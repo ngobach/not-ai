@@ -6,6 +6,7 @@
 #include <thread>
 
 #include "submitter.h"
+#include "answer.h"
 
 using namespace std::chrono;
 
@@ -59,15 +60,27 @@ bool submitter::disconnect() {
 #if DEBUG == true
 submitter::SubmitResult submitter::submit(const char *name, int x, int y, int rotate) {
     SubmitResult result = {};
-    result.x = x;
-    result.y = y;
-    result.name = name;
-    result.rotate = rotate;
+    if (ans.empty()) {
+        return { "OK", x, y, rotate, OK };
+    }
+
+    result.verb = WRONG;
+    for (const auto &a : ans) {
+        if (a.name == name && a.rotate == rotate && abs(a.x - x) <= 5 && abs(a.y - y) <= 5) {
+            result.x = a.x;
+            result.y = a.y;
+            result.name = name;
+            result.rotate = a.rotate;
+            result.verb = OK;
+        }
+    }
     return result;
 }
 #else
 submitter::SubmitResult submitter::submit(const char *name, int x, int y, int rotate) {
+    submitter::SubmitResult result {};
     long long delay = lastSubmit + SUBMIT_DELAY_MS - millis();
+    char verb[10];
     if (delay > 0) {
         printf("Have to wait %lld millis before submit\n", delay);
         std::this_thread::sleep_for(std::chrono::milliseconds(delay));
@@ -78,7 +91,19 @@ submitter::SubmitResult submitter::submit(const char *name, int x, int y, int ro
     ssize_t len = recv(sock_fd, sock_buff, MAX_BUFF, 0);
     sock_buff[len] = 0;
     printf("<< %s", sock_buff);
+    sscanf(sock_buff, "%s %d %d", verb, &x, &y);
+    if (verb[0] == 'O') {
+        result.name = name;
+        result.x = x;
+        result.y = y;
+        result.rotate = rotate;
+        result.verb = OK;
+    } else if (strstr(sock_buff, "run rate")) {
+        result.verb = RETRY;
+    } else {
+        result.verb = WRONG;
+    }
     lastSubmit = millis();
-    return submitter::SubmitResult();
+    return result;
 }
 #endif
